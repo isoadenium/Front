@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="form">
+ Bro nad Sis: <input type="text" name="bro_sis"><br>
+  Familly income: <input type="text" name="familly_income"><br>
+  income: <input type="text" name="income"><br>
+ unemp_parents: <input type="text" name="unemp_parents"><br><br>
+ <button onclick="myFunction()">Click me</button>
+</form>
+
+<div id="results"></div>
+
+<script>
+var formEl = document.getElementById('form');
+
+function myFunction() {
+    var form = new FormData(document.getElementById('form'));
+var settings = {
+  "url": "http://localhost:8080/katanemhmena/rest/student/makeform",
+  "method": "GET",
+  "timeout": 0,
+  "processData": false,
+  "mimeType": "multipart/form-data",
+  "contentType": false,
+  "data": form
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+}
+</script>
+
+</body>
+</html>
