@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+  
+<form id="form">
+ Bro nad Sis: <input type="text" name="bro_sis"><br>
+  Familly income: <input type="text" name="familly_income"><br>
+  income: <input type="text" name="income"><br>
+ unemp_parents: <input type="text" name="unemp_parents"><br><br>
+ <input type="submit">
+</form>
+
+<div id="results"></div>
+
+<script>
+  document.getElementById(form).onsubmit = async (e) => {
+    e.preventDefault();
+
+    let response = await fetch('http://localhost:8080/katanemhmena/rest/student/makeform', {
+      method: 'GET',
+      body: new FormData(form)
+    });
+
+    let result = await response.json();
+
+    alert(result.message);
+  };
+</script>
+
+</body>
+</html>
